@@ -15,6 +15,10 @@ import com.springframework.nanotrader.selenium.model.PortfolioElement;
 import com.springframework.nanotrader.selenium.model.TradeElement;
 import com.springframework.nanotrader.selenium.model.UserElement;
 
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.JavascriptExecutor;
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author Ilayaperumal Gopinathan
  * 
@@ -46,9 +50,16 @@ public class TestBase implements LoginElement, UserElement, TradeElement, Portfo
 	}
 	
 	public void logout(){
-		WebElement userNameNav = waitForElementById(NAVBAR_USERNAME);
+		System.out.println("*************************");
+		System.out.println("In Logout");
+		WebElement userNameNav = waitForElementById("nb-username");
+		//WebElement userNameNav = waitForElementById("fat-menu");
 		userNameNav.click();
-		clickElementById(LOGOUT);
+		//clickElementById(LOGOUT);
+		//
+		//clickElementById("nb-username"); // not working
+		//clickElementById("logout");
+		//WebElement myAccount = driver.findElement(By.id("nc-portfolio"));
 	}
 
 	public void typeTextById(String idLocator, String value) {
@@ -78,4 +89,6 @@ public class TestBase implements LoginElement, UserElement, TradeElement, Portfo
 			}
 		});
 	}
+
+
 }
